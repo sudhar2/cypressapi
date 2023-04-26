@@ -1,0 +1,9 @@
+{
+  "name": "CypressApi",
+  "version": "1.0.0",
+  "description": "Cypress API tests",
+  "main": "index.js",
+  "repository": "https://github.com/sudhar2/cypressapi.git",
+  "author": "Sudha Ramachandran",
+  "license": "MIT"
+}
