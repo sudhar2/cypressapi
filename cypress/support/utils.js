@@ -1,8 +1,9 @@
 import { StatusCodes } from "http-status-codes";
 
-export const doApiCall = (method, url, qs, body, statusCode) => {
+export const doApiCall = (method, url, body, statusCode) => {
   let headers = {
     'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
   }
 
   return cy
@@ -11,7 +12,6 @@ export const doApiCall = (method, url, qs, body, statusCode) => {
       url,
       body,
       headers,
-      qs,
       failOnStatusCode: false
     })
     .then(function (response) {
@@ -22,6 +22,10 @@ export const doApiCall = (method, url, qs, body, statusCode) => {
 }
 
 
-export const get = (url, qs, statusCode=StatusCodes.OK) => {
-  return doApiCall('GET', url, qs, null, statusCode);
+export const get = (url, statusCode = StatusCodes.OK) => {
+  return doApiCall('GET', url, null, statusCode);
+}
+
+export const post = (url, body, statusCode = StatusCodes.CREATED) => {
+  return doApiCall('POST', url, body, statusCode);
 }
